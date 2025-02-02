@@ -38,12 +38,12 @@ trait CacheTrait
      * @param int $ttl
      * @return array - arrat of rows, even if there is only one row
      */
-    protected function cachedGetAll(string $query, array $data, int $fetchStyle = Model::FETCH_ASSOC, int $ttl = null): array
+    protected function cachedSelectAll(string $query, array $data, int $fetchStyle = Model::FETCH_ASSOC, int $ttl = null): array
     {
         //check if cacher is set
         if (!$this->cacher) {
             //if not, just query the database
-            return $this->getAll($query, $data, $fetchStyle);
+            return $this->selectAll($query, $data, $fetchStyle);
         }
         //generate a cache key
         $key = $this->createCacheKey($query, $data, "all".$fetchStyle);
@@ -55,7 +55,7 @@ trait CacheTrait
         }
 
         //if not found, query the database
-        $result = $this->getAll($query, $data, $fetchStyle);
+        $result = $this->selectAll($query, $data, $fetchStyle);
 
         //cache the result
         $ttl = $ttl ?? $this->defaultTtl;
@@ -71,12 +71,12 @@ trait CacheTrait
      * @param int $ttl
      * @return array - arrat of rows, even if there is only one row
      */
-    protected function cachedGetOne(string $query, array $data, int $fetchStyle = Model::FETCH_ASSOC, int $ttl = null)
+    protected function cachedSelectOne(string $query, array $data, int $fetchStyle = Model::FETCH_ASSOC, int $ttl = null)
     {
         //check if cacher is set
         if (!$this->cacher) {
             //if not, just query the database
-            return $this->getOne($query, $data, $fetchStyle);
+            return $this->selectOne($query, $data, $fetchStyle);
         }
 
         //generate a cache key
@@ -89,7 +89,7 @@ trait CacheTrait
         }
 
         //if not found, query the database
-        $result = $this->getOne($query, $data, $fetchStyle);
+        $result = $this->selectOne($query, $data, $fetchStyle);
 
         //cache the result
         $ttl = $ttl ?? $this->defaultTtl;

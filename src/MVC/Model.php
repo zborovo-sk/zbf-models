@@ -29,15 +29,13 @@ class Model
         }
     }
 
-    public function getAll(string $query, array $data = [], int $fetchStyle = Model::FETCH_ASSOC): array
+    public function selectAll(string $query, array $data = [], int $fetchStyle = Model::FETCH_ASSOC): array
     {
         return $this->db->query($query, $data)->fetchAll($fetchStyle);
     }
 
-    public function getOne(string $query, array $data = [], int $fetchStyle = Model::FETCH_ASSOC)
+    public function selectOne(string $query, array $data = [], int $fetchStyle = Model::FETCH_ASSOC)
     {
         return $this->db->query($query, $data)->fetch($fetchStyle);
     }
-
-
 }
