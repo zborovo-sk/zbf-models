@@ -1,0 +1,11 @@
+{
+    "name": "zborovo-sk/zbf-models",
+    "description": "Model component for zbf-core framework.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "ZborovoSK\\ZBFModels\\": "src/"
+        }
+    },
+    "require": {}
+}
